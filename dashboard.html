@@ -66,6 +66,56 @@
       color: #333;
       font-size: 16px;
     }
+
+    /* Hidden Transaction Popup */
+    .popup {
+      display: none;
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      z-index: 10;
+      font-size: 14px;
+      color: #1d1d1f;
+    }
+
+    .popup h4 {
+      margin-top: 0;
+      color: #112a46;
+      font-size: 16px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 8px;
+    }
+
+    .popup ul {
+      padding-left: 20px;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 5;
+    }
+
+    .close-btn {
+      margin-top: 12px;
+      padding: 8px 12px;
+      background: #112a46;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      float: right;
+    }
   </style>
 </head>
 <body>
@@ -81,9 +131,10 @@
   </header>
 
   <div class="container">
-    <div class="card">
-      <h3>Account Balance</h3>
-      <p>₹25,000</p>
+    <div class="card" onclick="showPopup()">
+      <h3>Available Balance</h3>
+      <p style="font-weight: bold;">$30,100.00</p>
+      <small style="color: gray;">Tap to view transaction history</small>
     </div>
     <div class="card">
       <h3>Last Transaction</h3>
@@ -94,6 +145,29 @@
       <p>MACS-WLT-983740</p>
     </div>
   </div>
+
+  <!-- Transaction Popup -->
+  <div class="overlay" id="overlay" onclick="hidePopup()"></div>
+  <div class="popup" id="popupBox">
+    <h4>Transaction History</h4>
+    <ul>
+      <li><strong>$100.00</strong> deposited via <em>Apple Gift Card</em><br>on <strong>29 April 2025</strong> at <strong>15:22 PM</strong></li>
+      <br>
+      <li><strong>$30,000.00</strong> cash deposit<br>on <strong>07 May 2025</strong> at <strong>13:34 PM</strong></li>
+    </ul>
+    <button class="close-btn" onclick="hidePopup()">Close</button>
+  </div>
+
+  <script>
+    function showPopup() {
+      document.getElementById('popupBox').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+    function hidePopup() {
+      document.getElementById('popupBox').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
 
 </body>
 </html>
