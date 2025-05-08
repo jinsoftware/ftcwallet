@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MACS Wallet - Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    * { box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
-      background: #eef2f5;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #eef2f5;
       margin: 0;
-      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      padding: 20px;
     }
     .login-box {
       background: white;
-      padding: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      border-radius: 8px;
-      width: 300px;
+      width: 100%;
+      max-width: 350px;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     .login-box h2 {
       text-align: center;
@@ -29,24 +31,28 @@
     }
     input {
       width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
       border: 1px solid #ccc;
+      font-size: 16px;
     }
     button {
       width: 100%;
-      padding: 10px;
-      background: #112a46;
+      padding: 12px;
+      background-color: #112a46;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
     }
     .error {
       color: red;
       text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
     }
   </style>
 </head>
