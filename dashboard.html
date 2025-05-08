@@ -13,10 +13,39 @@
     header {
       background-color: #112a46;
       color: white;
-      padding: 16px;
-      text-align: center;
-      font-size: 24px;
+      padding: 16px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
+    .user-info img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 12px;
+    }
+    .user-info div {
+      display: flex;
+      flex-direction: column;
+    }
+    .user-info span {
+      font-size: 16px;
       font-weight: bold;
+    }
+    .badge {
+      background-color: gold;
+      color: #112a46;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: bold;
+      margin-top: 4px;
+      text-align: center;
+      width: fit-content;
     }
     .container {
       padding: 30px;
@@ -39,7 +68,15 @@
 </head>
 <body>
 
-  <header>Welcome to MACS Wallet</header>
+  <header>
+    <div class="user-info">
+      <img src="https://i.ibb.co/FbD0V4x/user-icon.png" alt="Profile">
+      <div>
+        <span>Roslyn White</span>
+        <div class="badge">Premium+ Wallet</div>
+      </div>
+    </div>
+  </header>
 
   <div class="container">
     <div class="card">
