@@ -46,12 +46,10 @@
       margin-top: 3px;
       width: fit-content;
     }
-
     .menu-icon {
       font-size: 26px;
       cursor: pointer;
     }
-
     .container {
       padding: 16px;
     }
@@ -76,8 +74,6 @@
       color: gray;
       font-size: 13px;
     }
-
-    /* Transaction Detail */
     .details {
       display: none;
       background: #ffffff;
@@ -97,8 +93,6 @@
     .details table tr:not(:last-child) td {
       border-bottom: 1px solid #ddd;
     }
-
-    /* Slide-in Menu */
     .slide-menu {
       position: fixed;
       top: 0;
@@ -130,6 +124,45 @@
       background: rgba(0,0,0,0.3);
       z-index: 5;
     }
+    #supportForm {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 20;
+      padding: 30px;
+    }
+    #supportForm h3 {
+      margin-top: 0;
+      color: #112a46;
+    }
+    #supportForm textarea, #supportForm select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    #supportForm button {
+      margin-top: 15px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    #claimBtn {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: gold;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -148,11 +181,10 @@
   <div class="container">
     <div class="card" onclick="toggleDetails()">
       <h3>Available Balance</h3>
-      <p style="font-weight: bold;">$30,100.00</p>
+      <p id="balance">$30,100.00</p>
       <small>Tap to view full transaction details</small>
-
       <div class="details" id="txnDetails">
-        <table>
+        <table id="txnTable">
           <tr>
             <td><strong>$100.00</strong></td>
             <td>Apple Gift Card</td>
@@ -168,30 +200,45 @@
         </table>
       </div>
     </div>
-
     <div class="card">
       <h3>Wallet ID</h3>
       <p>MACS-WLT-983740</p>
     </div>
+    <button id="claimBtn" onclick="claimNow()">Claim Now</button>
   </div>
 
-  <!-- Slide Menu -->
   <div class="slide-menu" id="sideMenu">
     <h3>Menu</h3>
     <ul>
-      <li onclick="alert('Logging out...')">Log Out</li>
-      <li>Support</li>
-      <li>Pay Bills</li>
-      <li>Money Transfer</li>
-      <li>Edit Profile</li>
-      <li>Claim Weekly Compensation</li>
-      <li>Check Interest Rate</li>
-      <li>Senior Citizen Rewards</li>
-      <li>Senior Citizen Benefits</li>
-      <li>Physically Challenged Benefits</li>
+      <li onclick="window.location.href='index.html'">Log Out</li>
+      <li onclick="openSupport()">Support</li>
+      <li onclick="alert('Your account is not eligible for this feature.')">Pay Bills</li>
+      <li onclick="alert('Your account is not eligible for this feature at this moment.')">Money Transfer</li>
+      <li onclick="alert('Loading...')">Edit Profile</li>
+      <li onclick="document.getElementById('claimBtn').style.display='block'">Claim Weekly Compensation</li>
+      <li onclick="alert('Loading...')">Check Interest Rate</li>
+      <li onclick="alert('Loading...')">Senior Citizen Rewards</li>
+      <li onclick="alert('Loading...')">Senior Citizen Benefits</li>
+      <li onclick="alert('Loading...')">Physically Challenged Benefits</li>
     </ul>
   </div>
   <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+  <div id="supportForm">
+    <h3>Support Request</h3>
+    <select>
+      <option>Transaction Failed</option>
+      <option>Card Not Working</option>
+      <option>Unable to Login</option>
+      <option>Amount Deducted but Not Received</option>
+      <option>Deposit Issue</option>
+      <option>Withdraw Issue</option>
+      <option>Other</option>
+    </select>
+    <textarea rows="5" placeholder="Describe your issue..."></textarea>
+    <button style="background:#112a46;color:white;" onclick="submitSupport()">Submit</button>
+    <button style="background:#ccc;margin-left:10px;" onclick="closeSupport()">Cancel</button>
+  </div>
 
   <script>
     function toggleDetails() {
@@ -207,6 +254,28 @@
     function closeMenu() {
       document.getElementById("sideMenu").style.left = "-260px";
       document.getElementById("overlay").style.display = "none";
+    }
+
+    function openSupport() {
+      document.getElementById("supportForm").style.display = "block";
+      closeMenu();
+    }
+
+    function closeSupport() {
+      document.getElementById("supportForm").style.display = "none";
+    }
+
+    function submitSupport() {
+      document.getElementById("supportForm").innerHTML = '<h3>Thank you for your submission!</h3><p>We will contact you in 24 hours.</p>';
+    }
+
+    function claimNow() {
+      const balance = document.getElementById("balance");
+      let current = parseFloat(balance.innerText.replace(/[$,]/g, ""));
+      current += 250;
+      balance.innerText = "$" + current.toLocaleString(undefined, {minimumFractionDigits:2});
+      document.getElementById("txnTable").innerHTML += '<tr><td><strong>$250.00</strong></td><td>Weekly Compensation</td><td>08 May 2025</td><td>20:00 PM</td></tr>';
+      document.getElementById("claimBtn").style.display = "none";
     }
   </script>
 
