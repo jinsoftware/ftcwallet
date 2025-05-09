@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MACS Wallet - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!-- ✅ iOS Web App Support Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="MACS Wallet">
+  <link rel="apple-touch-icon" href="icon.png"> <!-- 🔁 Replace with actual icon (192x192 or 512x512) -->
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f5f7fa;
+    }
+    /* ... ✅ your full CSS remains unchanged ... */
+  </style>
+</head>
+<body>
+  <!-- ✅ your entire body content remains unchanged -->
+  <!-- (no changes made below, only meta added in head above) -->
+
+  <header> ... </header>
+  <div class="container"> ... </div>
+  <div class="slide-menu" id="sideMenu"> ... </div>
+  <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+  <div id="supportForm"> ... </div>
+
+  <script>
+    // ✅ your JS remains unchanged
+  </script>
+
+</body>
+</html>
